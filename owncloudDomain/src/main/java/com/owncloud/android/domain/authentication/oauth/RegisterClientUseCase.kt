@@ -38,7 +38,16 @@ class RegisterClientUseCase(
         val registrationEndpoint: String,
         val clientName: String,
         val redirectUris: List<String>,
-        val tokenEndpointAuthMethod: String,
-        val applicationType: String
+        val tokenEndpointAuthMethod: String = CLIENT_REGISTRATION_SECRET_POST,
+        val applicationType: String = CLIENT_REGISTRATION_APPLICATION_TYPE
     )
+
+    companion object {
+        /**
+         * "client_secret_post": The client uses the HTTP POST parameters as defined in OAuth 2.0, Section 2.3.1.
+         * https://tools.ietf.org/html/rfc7591#section-2.3.1
+         */
+        private const val CLIENT_REGISTRATION_SECRET_POST = "client_secret_post"
+        private const val CLIENT_REGISTRATION_APPLICATION_TYPE = "native"
+    }
 }
